@@ -57,3 +57,25 @@ export const fetchRecentComics = async (limit = 10) => {
         return [];
     }
 };
+
+// Function to fetch detailed information about a comic by its ID
+export const fetchComicById = async (comicId) => {
+    const results = await makeApiRequest(`/comics/${comicId}`);
+    return results.length ? results[0] : null; // Return the first result
+};
+
+
+// Function to fetch characters associated with a specific comic
+export const fetchComicCharacters = async (comicId) => {
+    try {
+        const response = await makeApiRequest(`/comics/${comicId}/characters`);
+        if (!response || !Array.isArray(response)) {
+            console.error('Invalid response format for characters:', response);
+            return [];
+        }
+        return response;
+    } catch (error) {
+        console.error(`Error fetching characters for comic ID ${comicId}:`, error);
+        return [];
+    }
+};
