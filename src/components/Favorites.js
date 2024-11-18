@@ -2,7 +2,7 @@ import React from 'react';
 import ComicCard from './ComicCard';
 
 const Favorites = ({ favoriteComics, onComicSelect, onFavoriteToggle, clearFavorites }) => {
-    // Сортируем комиксы по алфавиту
+    // Sorting favorite comics by title
     const sortedFavorites = [...favoriteComics].sort((a, b) =>
         a.title.localeCompare(b.title)
     );
@@ -11,7 +11,7 @@ const Favorites = ({ favoriteComics, onComicSelect, onFavoriteToggle, clearFavor
         <div>
             <h2 className="text-3xl font-bold text-yellow-500 mb-4 underline decoration-red-600 decoration-4">Favorites</h2>
 
-            {/* Кнопка очистки избранного */}
+            {/* Clear All Favorites Button */}
             {favoriteComics.length > 0 && (
                 <button
                     onClick={clearFavorites}
