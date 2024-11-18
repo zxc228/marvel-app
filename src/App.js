@@ -43,7 +43,7 @@ function App() {
     
             if (uniqueFilteredComics.length === 0) {
                 console.log('No more unique comics to load');
-                return; // Прекращаем загрузку, если нечего добавлять
+                return; // Stop loading if there are no unique comics to add
             }
     
             setComics(prevComics => [...prevComics, ...uniqueFilteredComics]);
@@ -54,13 +54,13 @@ function App() {
         }
     }, [loading, comics]);
 
-        // Очистка всех избранных комиксов
-        const clearFavorites = () => {
-            if (window.confirm("Are you sure you want to clear all favorites?")) {
-                setFavoriteComics([]); // Очищаем состояние избранного
-                localStorage.setItem('favorites', JSON.stringify([])); // Очищаем localStorage
-            }
-        };
+    // Clear all favorite comics
+    const clearFavorites = () => {
+        if (window.confirm("Are you sure you want to clear all favorites?")) {
+            setFavoriteComics([]); // Clear favorite comics state
+            localStorage.setItem('favorites', JSON.stringify([])); // Clear localStorage
+        }
+    };
 
     useEffect(() => {
         loadComics();

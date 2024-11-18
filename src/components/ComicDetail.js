@@ -1,10 +1,10 @@
 // ComicDetail.js
 import React, { useEffect, useState } from 'react';
-import { fetchComicById, fetchComicCharacters } from '../marvelApi'; // Импортируем новую функцию
+import { fetchComicById, fetchComicCharacters } from '../marvelApi'; 
 
 const ComicDetail = ({ comicId, onFavoriteToggle, isFavorite, goBack }) => {
     const [comic, setComic] = useState(null);
-    const [characters, setCharacters] = useState([]); // Новое состояние для персонажей
+    const [characters, setCharacters] = useState([]); 
 
     // Fetch the comic data when the component is mounted
     useEffect(() => {

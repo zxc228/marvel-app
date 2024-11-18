@@ -2,18 +2,18 @@
 import React, { useState } from 'react';
 
 const RecentComicsFeed = ({ comics, onComicSelect, onFavoriteToggle, favoriteComics }) => {
-    const [filterYear, setFilterYear] = useState(''); // Состояние для хранения года фильтрации
+    const [filterYear, setFilterYear] = useState(''); // State to store the filter year
 
-    // Фильтруем комиксы по году, если год указан
+    // Filter comics by year if a year is specified
     const filteredComics = comics.filter(comic => {
-        if (!filterYear) return true; // Если год не указан, возвращаем весь список
-        const releaseDate = comic.dates.find(date => date.type === 'onsaleDate')?.date; // Ищем дату выхода
-        return releaseDate && new Date(releaseDate).getFullYear().toString() === filterYear; // Сравниваем год
+        if (!filterYear) return true; // If no year is specified, return the entire list
+        const releaseDate = comic.dates.find(date => date.type === 'onsaleDate')?.date; // Find the release date
+        return releaseDate && new Date(releaseDate).getFullYear().toString() === filterYear; // Compare the year
     });
 
     return (
         <div>
-            {/* Поле для ввода года */}
+            {/* Input field for year */}
             <div className="mb-6">
                 <label htmlFor="yearFilter" className="block text-lg font-bold text-red-700 mb-2">
                     Filter by Year:
@@ -22,13 +22,13 @@ const RecentComicsFeed = ({ comics, onComicSelect, onFavoriteToggle, favoriteCom
                     id="yearFilter"
                     type="text"
                     value={filterYear}
-                    onChange={(e) => setFilterYear(e.target.value)} // Обновляем состояние при вводе
+                    onChange={(e) => setFilterYear(e.target.value)} // Update state on input change
                     placeholder="Enter year (e.g., 2023)"
                     className="w-full p-2 border-2 border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-700 bg-white text-gray-900"
                 />
             </div>
 
-            {/* Список комиксов */}
+            {/* Comics list */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {filteredComics.map(comic => (
                     <div
